@@ -18,8 +18,8 @@
 - volunteers for weekend work on availability
 - Monday work:
   - [x] full CRUD testing with Postman
-  - [ ] basic files and dependencies (frontend)
-  - [ ] lay out base with react hooks
+  - [x] basic files and dependencies (frontend)
+  - [x] lay out base with react hooks
 
 ### Day 2 (Tuesday):
 
