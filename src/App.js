@@ -1,5 +1,6 @@
 import React from 'react';
 // import logo from './logo.svg';
+import Home from './components/Home';
 import { Link, Switch, Route } from 'react-router-dom';
 
 function App() {
@@ -10,7 +11,7 @@ function App() {
         <Link to="/">Home</Link>
       </header>
       <Switch>
-        <Route>{/* <Home /> */}</Route>
+        <Route path="/" component={Home} />
         <Route>{/* <ShowBook /> */}</Route>
       </Switch>
     </div>
