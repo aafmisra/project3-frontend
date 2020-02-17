@@ -1,28 +1,22 @@
 import React from 'react';
 
-function ShowBook(book) {
-  const [thisBook, setBook] = useState([]);
-  function getBook() {
-    const url = `http://localhost:4000/books/${book._id}`;
-    fetch(url)
-      .then(res => res.json())
-      .then(res => setBook(res));
-  }
-
-  useEffect(() => {
-    getBook();
-  }, []);
+function ShowBook(props) {
+  const currentBook = props.books.find(
+    book => book.title === props.match.params.title
+  );
   return (
     <div>
-      <h3>{thisBook.title}</h3>
-      <img src={thisBook.coverPhotoURL} alt={thisBook.title} />
-      <p>{thisBook.author}</p>
-      <p>{thisBook.synopsis}</p>
-      <p>{thisBook.rating}</p>
-      <p>{thisBook.review}</p>
-      <a href={thisBook.amazonURL} target="_blank">
+      <h3>{currentBook.title}</h3>
+      <img src={currentBook.coverPhotoURL} alt={currentBook.title} />
+      <p>{currentBook.author}</p>
+      <p>{currentBook.synopsis}</p>
+      <p>{currentBook.rating}</p>
+      <p>{currentBook.review}</p>
+      <a href={currentBook.amazonURL} target="_blank">
         Buy it on Amazon
       </a>
     </div>
   );
 }
+
+export default ShowBook;
