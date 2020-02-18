@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react';
 // import logo from './logo.svg';
 import Home from './components/Home';
-import New from './components/New'
+import New from './components/New';
+import Edit from './components/Edit';
 import { Link, Switch, Route } from 'react-router-dom';
 import ShowBook from './components/ShowBook';
 
@@ -41,6 +42,9 @@ function App() {
           }}
         />
         <Route path="/new" component={New}/>
+        <Route path="/books/:id/edit" render={routerProps => {
+          return <Edit books={books} match={routerProps.match} />;
+        }} />
       </Switch>
     </div>
   );
