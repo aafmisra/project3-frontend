@@ -29,7 +29,7 @@ function App() {
     <div className="App">
       <header>
         <Link to="/books"><h1>BookBear</h1></Link>
-        <Link to="/new">Add a book</Link>
+        <Link to="/new" className='button'>Add a book</Link>
       </header>
       <main>
       <Switch>

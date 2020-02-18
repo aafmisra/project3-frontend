@@ -83,7 +83,7 @@ font-weight:bold;
 padding:10px 0;
 }
 
-div.oneBook a{
+div.oneBook a, .button{
   text-decoration: none;
   color: black;
   background-color: #ccc;
