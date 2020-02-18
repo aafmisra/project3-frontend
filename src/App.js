@@ -31,6 +31,7 @@ function App() {
         <Link to="/books"><h1>BookBear</h1></Link>
         <Link to="/new">Add a book</Link>
       </header>
+      <main>
       <Switch>
         <Route exact path="/books">
           <Home books={books} />
@@ -46,6 +47,7 @@ function App() {
           return <Edit books={books} match={routerProps.match} />;
         }} />
       </Switch>
+      </main>
     </div>
   );
 }

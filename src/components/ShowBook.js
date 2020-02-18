@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 
 function ShowBook(props) {
   const currentBook = props.books.find(
+
     book => book._id === props.match.params.id
   );
 
@@ -14,9 +15,11 @@ function ShowBook(props) {
 
   if (currentBook) {
     return (
-      <div>
+      <div className="oneBook">
         <h3>{currentBook.title}</h3>
         <img src={currentBook.coverPhotoURL} alt={currentBook.title} />
+            <div className="bookInfo">
+
         <p>{currentBook.author}</p>
         <p>{currentBook.synopsis}</p>
         <p>{currentBook.rating}</p>
@@ -25,6 +28,8 @@ function ShowBook(props) {
           Buy it on Amazon
         </a>
         <Link to={`/books/${currentBook._id}/edit`}>Edit</Link>
+            </div>
+
       </div>
     );
   } else {

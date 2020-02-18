@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 function Home({ books }) {
   console.log(books);
   return (
-    <div>
+    <div className="cardContainer">
       {books.map(book => (
         <div key={book._id}>
           <Link to={'/books/' + book._id}>
