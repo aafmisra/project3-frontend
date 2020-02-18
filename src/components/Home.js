@@ -4,9 +4,9 @@ import { Link } from 'react-router-dom';
 function Home({ books }) {
   console.log(books);
   return (
-    <div>
+    <div className="cardContainer">
       {books.map(book => (
-        <div key={book._id}>
+        <div key={book._id} className="card">
           <Link to={'/books/' + book.title}>
             <img src={book.coverPhotoURL} alt={book.title} />
           </Link>

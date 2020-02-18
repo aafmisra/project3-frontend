@@ -5,16 +5,18 @@ function ShowBook(props) {
     book => book.title === props.match.params.title
   );
   return (
-    <div>
-      <h3>{currentBook.title}</h3>
+    <div className="oneBook">
       <img src={currentBook.coverPhotoURL} alt={currentBook.title} />
-      <p>{currentBook.author}</p>
+      <div className="bookInfo">
+      <h3>{currentBook.title}</h3>
+      <p>by: {currentBook.author}</p>
       <p>{currentBook.synopsis}</p>
       <p>{currentBook.rating}</p>
       <p>{currentBook.review}</p>
       <a href={currentBook.amazonURL} target="_blank">
         Buy it on Amazon
       </a>
+      </div>
     </div>
   );
 }

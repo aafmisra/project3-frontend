@@ -29,6 +29,7 @@ function App() {
         <h1>BookBear</h1>
         <Link to="/books">Home</Link>
       </header>
+      <main>
       <Switch>
         <Route exact path="/books">
           <Home books={books} />
@@ -38,8 +39,9 @@ function App() {
           render={routerProps => {
             return <ShowBook books={books} match={routerProps.match} />;
           }}
-        />
+          />
       </Switch>
+      </main>
     </div>
   );
 }
