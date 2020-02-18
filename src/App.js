@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 // import logo from './logo.svg';
 import Home from './components/Home';
+import New from './components/New'
 import { Link, Switch, Route } from 'react-router-dom';
 import ShowBook from './components/ShowBook';
 
@@ -26,8 +27,8 @@ function App() {
   return (
     <div className="App">
       <header>
-        <h1>BookBear</h1>
-        <Link to="/books">Home</Link>
+        <Link to="/books"><h1>BookBear</h1></Link>
+        <Link to="/new">Add a book</Link>
       </header>
       <Switch>
         <Route exact path="/books">
@@ -39,6 +40,7 @@ function App() {
             return <ShowBook books={books} match={routerProps.match} />;
           }}
         />
+        <Route path="/new" component={New}/>
       </Switch>
     </div>
   );
