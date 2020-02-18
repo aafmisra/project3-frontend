@@ -27,7 +27,12 @@
 
 - [ ] navigation between pages
 - [ ] correct calls to api displayed
-- [ ] full CRUD functionality
+- [ ] full CRUD
+  - [x] complete read method
+  - [x] complete create method
+  - [ ] complete update method
+  - [ ] complete delete method
+- [ ] decide on model of header (seperate to each page, or dynamic across app)
 
 ### Day 3 (Wednesday):
 
