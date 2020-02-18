@@ -12,6 +12,7 @@ body,
 
 main {
   flex: 1 0 auto;
+  padding: 0 20px;
 }
 
 header,
@@ -60,4 +61,11 @@ div.oneBook img {
 .bookInfo {
   max-width: 570px;
   padding: 0 10px;
+}
+form{
+  display: flex;
+  flex-direction: column;
+}
+label{
+  margin: 10px 0;
 }

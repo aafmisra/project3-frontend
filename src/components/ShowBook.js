@@ -16,9 +16,9 @@ function ShowBook(props) {
   if (currentBook) {
     return (
       <div className="oneBook">
-        <h3>{currentBook.title}</h3>
         <img src={currentBook.coverPhotoURL} alt={currentBook.title} />
             <div className="bookInfo">
+        <h3>{currentBook.title}</h3>
 
         <p>{currentBook.author}</p>
         <p>{currentBook.synopsis}</p>

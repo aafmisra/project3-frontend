@@ -6,7 +6,7 @@ function Home({ books }) {
   return (
     <div className="cardContainer">
       {books.map(book => (
-        <div key={book._id}>
+        <div className= 'card' key={book._id}>
           <Link to={'/books/' + book._id}>
             <img src={book.coverPhotoURL} alt={book.title} />
           </Link>
