@@ -36,9 +36,9 @@ function App() {
           <Home books={books} />
         </Route>
         <Route
-          path="/books/:title"
+          exact path="/books/:id"
           render={routerProps => {
-            return <ShowBook books={books} match={routerProps.match} />;
+            return <ShowBook getBooks={getBooks} books={books} match={routerProps.match} />;
           }}
         />
         <Route path="/new" component={New}/>

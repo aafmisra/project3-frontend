@@ -1,8 +1,10 @@
 import React, { useState, useEffect } from 'react';
+import { Redirect } from 'react-router-dom';
 import Form from './Form'
 
 function New() {
     const [book, setBook] = useState({});
+    const [createdId, setCreatedId] = useState(null); //Thanks, Jen!
     const [values, setValues] = useState({
         title: '',
         author: '',
@@ -15,6 +17,7 @@ function New() {
     });
 
     const handleChange = function (event) {
+        event.persist();
         const { name, value } = event.target;
 
         setValues({ ...values, [name]: value });
@@ -33,27 +36,29 @@ function New() {
         console.log(newBook);
     };
 
-    const addBook = async function (
-        url = 'http://localhost:4000/books',
-        data = book
-    ) {
-        const response = await fetch(url, {
+    function addBook() {
+        const url = 'http://localhost:4000/books'
+        fetch(url, {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'
             },
-            body: data
+            body: book
+        })
+        .then(response => response.json())
+        .then(data => {
+            setCreatedId(data._id);
         });
-        return await response.json();
     };
 
     function handleSubmit(event) {
         event.preventDefault();
         addBook();
     }
-    // if (values.title) {
-    //     return <Redirect to={`/books/${values.title}`} />;
-    // }
+
+    if (createdId) {
+        return <Redirect to='/books' />;
+    }
 
     return (
         <Form values={values} handleChange={handleChange} handleSubmit={handleSubmit}/>
