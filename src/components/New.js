@@ -59,24 +59,6 @@ function New(props) {
         });
 
     };
-    setBook(JSON.stringify(newBook));
-    console.log(newBook);
-  };
-
-  function addBook() {
-    const url = 'http://localhost:4000/books';
-    fetch(url, {
-      method: 'POST',
-      headers: {
-        'content-type': 'application/json'
-      },
-      body: book
-    })
-      .then(response => response.json())
-      .then(data => {
-        setCreatedId(data._id);
-      });
-  }
 
   function handleSubmit(event) {
     event.preventDefault();
