@@ -16,8 +16,8 @@ function New(props) {
     readStatus: false
   });
 
-  // only run getBooks when New unmounts (every time
-  // you leave)
+  // only run getBooks when New unmounts (you
+  // click submit)
   useEffect(() => {
     return () => props.getBooks();
   }, []);

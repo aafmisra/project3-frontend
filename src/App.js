@@ -21,7 +21,9 @@ function App() {
       .catch(console.error);
   }
 
-  // run getBooks only on initial component mount (happens once)
+  // run getBooks only on initial component mount
+  // (happens once when page first loads, or manual
+  // refresh)
   useEffect(() => {
     getBooks();
   }, []);

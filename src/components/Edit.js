@@ -22,8 +22,8 @@ function Edit(props) {
     readStatus: currentBook.readStatus
   });
 
-  // only run getBooks when Edit unmounts (every time
-  // you leave)
+  // only run getBooks when Edit unmounts (you hit
+  // submit or delete)
   useEffect(() => {
     return () => props.getBooks();
   }, []);
@@ -69,19 +69,24 @@ function Edit(props) {
     updateBook();
   }
 
+  // deletes currentBook from ShowBook.js
   function deleteBook(event) {
     const url = `http://localhost:4000/books/${currentBook._id}`;
     fetch(url, { method: 'DELETE' })
+      // when running deleteBook, will make a boolean
+      // to be checked
       .then(res => {
         setDeleted(true);
       })
       .catch(console.error);
   }
 
+  // goes to home page if book was deleted
   if (deleted) {
     return <Redirect to="/books" />;
   }
 
+  // goes back to ShowBook if book was updated
   if (createdId) {
     return <Redirect to={`/books/${currentBook._id}`} />;
   }
