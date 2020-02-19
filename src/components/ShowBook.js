@@ -15,16 +15,13 @@ function ShowBook(props) {
         <div className="bookInfo">
           <h3>{currentBook.title}</h3>
 
-          <p>{currentBook.author}</p>
-          <p>{currentBook.synopsis}</p>
-          <p>{currentBook.rating}</p>
-          <p>{currentBook.review}</p>
+          <p>Author: {currentBook.author}</p>
+          <p>Synopsis: {currentBook.synopsis}</p>
+          <p>Rating: {currentBook.rating}/5</p>
+          <p>Review: {currentBook.review}</p>
           <a href={currentBook.amazonURL} target="_blank">
             Buy it on Amazon
           </a>
-
-          <Link to={`/books/${currentBook._id}/edit`}>Edit</Link>
-
         </div>
       </div>
     );
