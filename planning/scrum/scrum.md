@@ -30,3 +30,14 @@
 - Dan: very excited about where we are in regards to the schedule
 - Joe: eager to start on delete and finish update (edit page)
 - All: nrevous about user model implementation
+
+## Day 3
+
+- Dan: learned that in order to push a branch, need to either merge or delete previous pull rewuest on same branch
+- completed full CRUD
+- hit MVP with design, and functionality
+- fully navigate frontend
+- Asha: submitted a pull request for dynamic header button, additional styling, along with character drop fix
+- Teresa: styled forms up to be formatted better
+- Dan: pull request for fixing issue with new info not being displayed until refresh
+- Teresa: excited to see bug fixes
