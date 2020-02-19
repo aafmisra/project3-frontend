@@ -8,6 +8,7 @@ import ShowBook from './components/ShowBook';
 
 function App() {
   const [books, setBooks] = useState([]);
+  const [error, setError] = useState(false);
 
   function getBooks() {
     const url = `http://localhost:4000/books`;
@@ -18,7 +19,9 @@ function App() {
         setBooks(data);
         console.log(data);
       })
-      .catch(console.error);
+      .catch(() => {
+        setError(true);
+      });
   }
 
   // run getBooks only on initial component mount
@@ -28,10 +31,14 @@ function App() {
     getBooks();
   }, []);
 
+  //displays error message if books can't be retrieved
+  if (error) {
+    return <div>Sorry, there was an error getting the books</div>;
+  }
+
   return (
     <div className="App">
       <header>
-
         <h1>
           <Link to="/books">BookBear</Link>
         </h1>
@@ -46,7 +53,10 @@ function App() {
             path="/books/:id"
             render={routerProps => {
               return (
-                <Link to={`/books/${routerProps.match.params.id}/edit`} className="button">
+                <Link
+                  to={`/books/${routerProps.match.params.id}/edit`}
+                  className="button"
+                >
                   Edit
                 </Link>
               );
@@ -64,7 +74,6 @@ function App() {
             </Link>
           </Route>
         </Switch>
-
       </header>
       <main>
         <Switch>
@@ -96,7 +105,6 @@ function App() {
                   match={routerProps.match}
                 />
               );
-
             }}
           />
         </Switch>
