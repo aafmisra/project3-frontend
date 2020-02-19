@@ -25,13 +25,13 @@
 
 #### (full mvp functionality with bare minimum styling (placement))
 
-- [ ] navigation between pages
-- [ ] correct calls to api displayed
-- [ ] full CRUD
+- [x] navigation between pages
+- [x] correct calls to api displayed
+- [x] full CRUD
   - [x] complete read method
   - [x] complete create method
-  - [ ] complete update method
-  - [ ] complete delete method
+  - [x] complete update method
+  - [x] complete delete method
 - [ ] decide on model of header (seperate to each page, or dynamic across app)
 
 ### Day 3 (Wednesday):
