@@ -22,6 +22,12 @@ function Edit(props) {
     readStatus: currentBook.readStatus
   });
 
+  // only run getBooks when Edit unmounts (every time
+  // you leave)
+  useEffect(() => {
+    return () => props.getBooks();
+  }, []);
+
   const handleChange = function(event) {
     const { name, value } = event.target;
 
