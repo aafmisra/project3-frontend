@@ -18,6 +18,7 @@ main {
 header,
 footer {
   flex-shrink: 0;
+  background-color: #b3cdd1;
 }
 
 h1 a {
@@ -26,12 +27,12 @@ h1 a {
 }
 
 h1 a:hover {
-
 }
 
 body {
   margin: 0;
   font-family: 'Segoe UI', 'Roboto', sans-serif;
+  background-color: #f0f4c8;
 }
 
 header {
@@ -60,7 +61,6 @@ header {
   align-items: center;
   justify-content: center;
   flex-wrap: wrap;
-
 }
 
 div.oneBook img {
@@ -74,35 +74,48 @@ div.oneBook img {
   padding: 0 10px;
 }
 
-form{
+form {
   display: flex;
   flex-direction: column;
 }
 
-label{
+label {
   margin: 10px 0;
 }
 
-input{
-padding: 5px;
+input {
+  padding: 5px;
 }
 
-input[type='submit']{
-font-size: 16px;
-background-color:#abd1c6;
-font-weight:bold;
-padding:10px 0;
+input[type='submit'] {
+  font-size: 16px;
+  background-color: #983628;
+  color: #f0f4c8;
+  font-weight: bold;
+  padding: 10px 0;
 }
 
-div.oneBook a, .button{
+div.oneBook a,
+.button {
   text-decoration: none;
   text-transform: uppercase;
   letter-spacing: 2px;
-  color: black;
-  background-color: #abd1c6;
+  color: #b3cdd1;
+  background-color: #983628;
   padding: 6px 8px;
-  margin:5px;
-  display:inline-block;
+  margin: 5px;
+  display: inline-block;
+}
+
+div.oneBook a {
+  text-decoration: none;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  color: #f0f4c8;
+  background-color: #983628;
+  padding: 6px 8px;
+  margin: 5px;
+  display: inline-block;
 }
 
 div.card h3 {
