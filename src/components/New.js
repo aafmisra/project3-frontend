@@ -16,11 +16,11 @@ function New() {
         readStatus: false
     });
 
-    const handleChange = function (event) {
+    const handleChange = async function (event) {
         event.persist();
         const { name, value } = event.target;
 
-        setValues({ ...values, [name]: value });
+        await setValues({ ...values, [name]: value });
         console.log(values);
         const newBook = {
             title: values.title,
@@ -30,9 +30,9 @@ function New() {
             synopsis: values.synopsis,
             rating: values.rating,
             review: values.review,
-            readStatus: values.readStatus
+            readStatus: values.readStatus,
         };
-        setBook(JSON.stringify(newBook));
+        setBook(newBook);
         console.log(newBook);
     };
 
@@ -43,7 +43,7 @@ function New() {
             headers: {
                 'content-type': 'application/json'
             },
-            body: book
+            body: JSON.stringify(book)
         })
         .then(response => response.json())
         .then(data => {
