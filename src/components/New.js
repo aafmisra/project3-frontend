@@ -5,17 +5,6 @@ import Form from './Form';
 function New(props) {
   const [book, setBook] = useState({});
   const [createdId, setCreatedId] = useState(null); //Thanks, Jen!
-  const [values, setValues] = useState({
-    title: '',
-    author: '',
-    coverPhotoURL: '',
-    amazonURL: '',
-    synopsis: '',
-    rating: 0,
-    review: '',
-    readStatus: false
-  });
-
 
   // only run getBooks when New unmounts (you
   // click submit)
@@ -23,42 +12,27 @@ function New(props) {
     return () => props.getBooks();
   }, []);
 
-  
-    const handleChange = async function (event) {
-        event.persist();
-        const { name, value } = event.target;
+  const handleChange = function(event) {
+    event.persist();
+    const { name, value } = event.target;
 
-        await setValues({ ...values, [name]: value });
-        console.log(values);
-        const newBook = {
-            title: values.title,
-            author: values.author,
-            coverPhotoURL: values.coverPhotoURL,
-            amazonURL: values.amazonURL,
-            synopsis: values.synopsis,
-            rating: values.rating,
-            review: values.review,
-            readStatus: values.readStatus,
-        };
-        setBook(newBook);
-        console.log(newBook);
-    };
+    setBook({ ...book, [name]: value });
+  };
 
-    function addBook() {
-        const url = 'http://localhost:4000/books'
-        fetch(url, {
-            method: 'POST',
-            headers: {
-                'content-type': 'application/json'
-            },
-            body: JSON.stringify(book)
-        })
-        .then(response => response.json())
-        .then(data => {
-            setCreatedId(data._id);
-        });
-
-    };
+  function addBook() {
+    const url = 'http://localhost:4000/books';
+    fetch(url, {
+      method: 'POST',
+      headers: {
+        'content-type': 'application/json'
+      },
+      body: JSON.stringify(book)
+    })
+      .then(response => response.json())
+      .then(data => {
+        setCreatedId(data._id);
+      });
+  }
 
   function handleSubmit(event) {
     event.preventDefault();
@@ -70,11 +44,7 @@ function New(props) {
   }
 
   return (
-    <Form
-      values={values}
-      handleChange={handleChange}
-      handleSubmit={handleSubmit}
-    />
+    <Form book={book} handleChange={handleChange} handleSubmit={handleSubmit} />
   );
 }
 
