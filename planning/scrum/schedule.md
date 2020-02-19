@@ -32,18 +32,20 @@
   - [x] complete create method
   - [x] complete update method
   - [x] complete delete method
-- [ ] decide on model of header (seperate to each page, or dynamic across app)
+- [x] decide on model of header (seperate to each page, or dynamic across app)
 
 ### Day 3 (Wednesday):
 
 #### (full CSS flexbox styling completed)
 
+- [ ] merge bug fixes and styling
 - [ ] pick an icon and logo
 - [ ] choose color layout
 - [ ] fully implemented design
 - [ ] mobile functionality
 - [ ] full deployment
 - user reviews (family, friends, classmates)
+- [ ] attempt user model
 
 ### Day 4 (Thursday):
 

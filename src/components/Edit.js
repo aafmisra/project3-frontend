@@ -22,16 +22,20 @@ function Edit(props) {
     readStatus: currentBook.readStatus
   });
 
+
   // only run getBooks when Edit unmounts (you hit
   // submit or delete)
   useEffect(() => {
     return () => props.getBooks();
   }, []);
 
-  const handleChange = function(event) {
+  
+  const handleChange = async function(event) {
+    
+
     const { name, value } = event.target;
 
-    setValues({ ...values, [name]: value });
+    await setValues({ ...values, [name]: value });
     console.log(values);
     const updatedBook = {
       title: values.title,
@@ -41,22 +45,21 @@ function Edit(props) {
       synopsis: values.synopsis,
       rating: values.rating,
       review: values.review,
-      readStatus: values.readStatus
+      readStatus: values.readStatus,
     };
     //last character gets dropped, need to come back to this!
-    setBook(JSON.stringify(updatedBook));
-    console.log(updatedBook);
+    setBook(updatedBook);
+    console.log("UPDATED BOOK", event);
   };
 
   function updateBook() {
     const url = `http://localhost:4000/books/${currentBook._id}/edit`;
-
     fetch(url, {
       method: 'PUT',
       headers: {
         'content-type': 'application/json; charset=UTF-8'
       },
-      body: book
+      body: JSON.stringify(book)
     })
       .then(response => response.json())
       .then(data => {

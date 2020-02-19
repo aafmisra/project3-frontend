@@ -16,27 +16,48 @@ function New(props) {
     readStatus: false
   });
 
+
   // only run getBooks when New unmounts (you
   // click submit)
   useEffect(() => {
     return () => props.getBooks();
   }, []);
 
-  const handleChange = function(event) {
-    event.persist();
-    const { name, value } = event.target;
+  
+    const handleChange = async function (event) {
+        event.persist();
+        const { name, value } = event.target;
 
-    setValues({ ...values, [name]: value });
-    console.log(values);
-    const newBook = {
-      title: values.title,
-      author: values.author,
-      coverPhotoURL: values.coverPhotoURL,
-      amazonURL: values.amazonURL,
-      synopsis: values.synopsis,
-      rating: values.rating,
-      review: values.review,
-      readStatus: values.readStatus
+        await setValues({ ...values, [name]: value });
+        console.log(values);
+        const newBook = {
+            title: values.title,
+            author: values.author,
+            coverPhotoURL: values.coverPhotoURL,
+            amazonURL: values.amazonURL,
+            synopsis: values.synopsis,
+            rating: values.rating,
+            review: values.review,
+            readStatus: values.readStatus,
+        };
+        setBook(newBook);
+        console.log(newBook);
+    };
+
+    function addBook() {
+        const url = 'http://localhost:4000/books'
+        fetch(url, {
+            method: 'POST',
+            headers: {
+                'content-type': 'application/json'
+            },
+            body: JSON.stringify(book)
+        })
+        .then(response => response.json())
+        .then(data => {
+            setCreatedId(data._id);
+        });
+
     };
     setBook(JSON.stringify(newBook));
     console.log(newBook);

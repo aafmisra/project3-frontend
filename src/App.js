@@ -31,10 +31,40 @@ function App() {
   return (
     <div className="App">
       <header>
-        <Link to="/books">
-          <h1>BookBear</h1>
-        </Link>
-        <Link to="/new">Add a book</Link>
+
+        <h1>
+          <Link to="/books">BookBear</Link>
+        </h1>
+        <Switch>
+          <Route exact path="/books">
+            <Link to="/new" className="button">
+              Add a book
+            </Link>
+          </Route>
+          <Route
+            exact
+            path="/books/:id"
+            render={routerProps => {
+              return (
+                <Link to={`/books/${routerProps.match.params.id}/edit`} className="button">
+                  Edit
+                </Link>
+              );
+            }}
+          />
+          ;
+          <Route path="/new">
+            <Link to="/books" className="button">
+              Cancel
+            </Link>
+          </Route>
+          <Route exact path="/books/:id/edit">
+            <Link to="./" className="button">
+              Cancel
+            </Link>
+          </Route>
+        </Switch>
+
       </header>
       <main>
         <Switch>
@@ -54,6 +84,7 @@ function App() {
               );
             }}
           />
+
           <Route path="/new" render={() => <New getBooks={getBooks} />} />
           <Route
             path="/books/:id/edit"
@@ -65,6 +96,7 @@ function App() {
                   match={routerProps.match}
                 />
               );
+
             }}
           />
         </Switch>
