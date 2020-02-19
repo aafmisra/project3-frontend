@@ -20,6 +20,15 @@ footer {
   flex-shrink: 0;
 }
 
+h1 a {
+  text-decoration: none;
+  color: #000;
+}
+
+h1 a:hover {
+
+}
+
 body {
   margin: 0;
   font-family: 'Segoe UI', 'Roboto', sans-serif;
@@ -42,7 +51,7 @@ header {
 .card {
   margin: 10px;
   text-align: center;
-  max-width: 300px;
+  max-width: 270px;
 }
 
 .oneBook {
@@ -50,6 +59,8 @@ header {
   flex-direction: row;
   align-items: center;
   justify-content: center;
+  flex-wrap: wrap;
+
 }
 
 div.oneBook img {
@@ -62,10 +73,42 @@ div.oneBook img {
   max-width: 570px;
   padding: 0 10px;
 }
+
 form{
   display: flex;
   flex-direction: column;
 }
+
 label{
   margin: 10px 0;
+}
+
+input{
+padding: 5px;
+}
+
+input[type='submit']{
+font-size: 16px;
+background-color:#abd1c6;
+font-weight:bold;
+padding:10px 0;
+}
+
+div.oneBook a, .button{
+  text-decoration: none;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  color: black;
+  background-color: #abd1c6;
+  padding: 6px 8px;
+  margin:5px;
+  display:inline-block;
+}
+
+div.card h3 {
+  margin: 5px 0;
+}
+
+div.card p {
+  margin: 3px 0;
 }
