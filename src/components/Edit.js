@@ -3,58 +3,35 @@ import { Redirect } from 'react-router-dom';
 import Form from './Form';
 
 function Edit(props) {
-  const currentBook = props.books.find(
-    book => book._id === props.match.params.id
-  );
-  // console.log(currentBook)
+  const url = `http://localhost:4000/books/${props.match.params.id}`;
 
-  const [book, setBook] = useState({});
+  const [book, setBook] = useState();
   const [deleted, setDeleted] = useState(false);
   const [createdId, setCreatedId] = useState(null); //Thanks, Jen!
-  const [values, setValues] = useState({
-    title: currentBook.title,
-    author: currentBook.author,
-    coverPhotoURL: currentBook.coverPhotoURL,
-    amazonURL: currentBook.amazonURL,
-    synopsis: currentBook.synopsis,
-    rating: currentBook.rating,
-    review: currentBook.review,
-    readStatus: currentBook.readStatus
-  });
+  
 
 
   // only run getBooks when Edit unmounts (you hit
   // submit or delete)
   useEffect(() => {
+    fetch(url)
+    .then(response => response.json())
+    .then(setBook)
+    .catch(console.error)
     return () => props.getBooks();
   }, []);
 
   
-  const handleChange = async function(event) {
-    
-
+  const handleChange = function(event) {
+    event.persist();
     const { name, value } = event.target;
 
-    await setValues({ ...values, [name]: value });
-    console.log(values);
-    const updatedBook = {
-      title: values.title,
-      author: values.author,
-      coverPhotoURL: values.coverPhotoURL,
-      amazonURL: values.amazonURL,
-      synopsis: values.synopsis,
-      rating: values.rating,
-      review: values.review,
-      readStatus: values.readStatus,
-    };
-    //last character gets dropped, need to come back to this!
-    setBook(updatedBook);
-    console.log("UPDATED BOOK", event);
+    setBook({ ...book, [name]: value });
+    
   };
 
   function updateBook() {
-    const url = `http://localhost:4000/books/${currentBook._id}/edit`;
-    fetch(url, {
+    fetch(url + '/edit', {
       method: 'PUT',
       headers: {
         'content-type': 'application/json; charset=UTF-8'
@@ -74,7 +51,6 @@ function Edit(props) {
 
   // deletes currentBook from ShowBook.js
   function deleteBook(event) {
-    const url = `http://localhost:4000/books/${currentBook._id}`;
     fetch(url, { method: 'DELETE' })
       // when running deleteBook, will make a boolean
       // to be checked
@@ -91,13 +67,13 @@ function Edit(props) {
 
   // goes back to ShowBook if book was updated
   if (createdId) {
-    return <Redirect to={`/books/${currentBook._id}`} />;
+    return <Redirect to={`/books/${createdId}`} />;
   }
 
   return (
     <>
       <Form
-        values={values}
+        book={book}
         handleChange={handleChange}
         handleSubmit={handleSubmit}
       />

@@ -11,7 +11,7 @@ function New(props) {
     coverPhotoURL: '',
     amazonURL: '',
     synopsis: '',
-    rating: '',
+    rating: 0,
     review: '',
     readStatus: false
   });
