@@ -21,6 +21,9 @@ function App() {
       .catch(console.error);
   }
 
+  // run getBooks only on initial component mount
+  // (happens once when page first loads, or manual
+  // refresh)
   useEffect(() => {
     getBooks();
   }, []);
@@ -28,6 +31,7 @@ function App() {
   return (
     <div className="App">
       <header>
+
         <h1>
           <Link to="/books">BookBear</Link>
         </h1>
@@ -60,6 +64,7 @@ function App() {
             </Link>
           </Route>
         </Switch>
+
       </header>
       <main>
         <Switch>
@@ -79,11 +84,19 @@ function App() {
               );
             }}
           />
-          <Route path="/new" component={New} />
+
+          <Route path="/new" render={() => <New getBooks={getBooks} />} />
           <Route
             path="/books/:id/edit"
             render={routerProps => {
-              return <Edit books={books} match={routerProps.match} />;
+              return (
+                <Edit
+                  getBooks={getBooks}
+                  books={books}
+                  match={routerProps.match}
+                />
+              );
+
             }}
           />
         </Switch>

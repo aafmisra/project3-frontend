@@ -6,10 +6,6 @@ function ShowBook(props) {
     book => book._id === props.match.params.id
   );
 
-  useEffect(() => {
-    props.getBooks();
-  }, []);
-
   console.log(currentBook);
 
   if (currentBook) {
@@ -26,6 +22,9 @@ function ShowBook(props) {
           <a href={currentBook.amazonURL} target="_blank">
             Buy it on Amazon
           </a>
+
+          <Link to={`/books/${currentBook._id}/edit`}>Edit</Link>
+
         </div>
       </div>
     );

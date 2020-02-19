@@ -1,21 +1,29 @@
 import React, { useState, useEffect } from 'react';
 import { Redirect } from 'react-router-dom';
-import Form from './Form'
+import Form from './Form';
 
-function New() {
-    const [book, setBook] = useState({});
-    const [createdId, setCreatedId] = useState(null); //Thanks, Jen!
-    const [values, setValues] = useState({
-        title: '',
-        author: '',
-        coverPhotoURL: '',
-        amazonURL: '',
-        synopsis: '',
-        rating: '',
-        review: '',
-        readStatus: false
-    });
+function New(props) {
+  const [book, setBook] = useState({});
+  const [createdId, setCreatedId] = useState(null); //Thanks, Jen!
+  const [values, setValues] = useState({
+    title: '',
+    author: '',
+    coverPhotoURL: '',
+    amazonURL: '',
+    synopsis: '',
+    rating: '',
+    review: '',
+    readStatus: false
+  });
 
+
+  // only run getBooks when New unmounts (you
+  // click submit)
+  useEffect(() => {
+    return () => props.getBooks();
+  }, []);
+
+  
     const handleChange = async function (event) {
         event.persist();
         const { name, value } = event.target;
@@ -49,20 +57,43 @@ function New() {
         .then(data => {
             setCreatedId(data._id);
         });
+
     };
+    setBook(JSON.stringify(newBook));
+    console.log(newBook);
+  };
 
-    function handleSubmit(event) {
-        event.preventDefault();
-        addBook();
-    }
+  function addBook() {
+    const url = 'http://localhost:4000/books';
+    fetch(url, {
+      method: 'POST',
+      headers: {
+        'content-type': 'application/json'
+      },
+      body: book
+    })
+      .then(response => response.json())
+      .then(data => {
+        setCreatedId(data._id);
+      });
+  }
 
-    if (createdId) {
-        return <Redirect to='/books' />;
-    }
+  function handleSubmit(event) {
+    event.preventDefault();
+    addBook();
+  }
 
-    return (
-        <Form values={values} handleChange={handleChange} handleSubmit={handleSubmit}/>
-    )
+  if (createdId) {
+    return <Redirect to="/books" />;
+  }
+
+  return (
+    <Form
+      values={values}
+      handleChange={handleChange}
+      handleSubmit={handleSubmit}
+    />
+  );
 }
 
 export default New;
