@@ -53,6 +53,7 @@ header {
   margin: 10px;
   text-align: center;
   max-width: 270px;
+  min-height: 463px;
 }
 
 .oneBook {
@@ -93,6 +94,10 @@ input[type='submit'] {
   color: #f0f4c8;
   font-weight: bold;
   padding: 10px 0;
+}
+
+img {
+  width: 100%;
 }
 
 div.oneBook a,
