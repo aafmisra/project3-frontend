@@ -38,12 +38,12 @@
 
 #### (full CSS flexbox styling completed)
 
-- [ ] merge bug fixes and styling
+- [x] merge bug fixes and styling
 - [ ] pick an icon and logo
-- [ ] choose color layout
-- [ ] fully implemented design
-- [ ] mobile functionality
-- [ ] full deployment
+- [x] choose color layout
+- [x] fully implemented design
+- [x] mobile functionality
+- [x] full deployment
 - user reviews (family, friends, classmates)
 - [ ] attempt user model
 
