@@ -9,6 +9,7 @@ function Edit(props) {
   // console.log(currentBook)
 
   const [book, setBook] = useState({});
+  const [deleted, setDeleted] = useState(false);
   const [createdId, setCreatedId] = useState(null); //Thanks, Jen!
   const [values, setValues] = useState({
     title: currentBook.title,
@@ -22,7 +23,6 @@ function Edit(props) {
   });
 
   const handleChange = function(event) {
-    event.persist();
     const { name, value } = event.target;
 
     setValues({ ...values, [name]: value });
@@ -63,16 +63,32 @@ function Edit(props) {
     updateBook();
   }
 
+  function deleteBook(event) {
+    const url = `http://localhost:4000/books/${currentBook._id}`;
+    fetch(url, { method: 'DELETE' })
+      .then(res => {
+        setDeleted(true);
+      })
+      .catch(console.error);
+  }
+
+  if (deleted) {
+    return <Redirect to="/books" />;
+  }
+
   if (createdId) {
     return <Redirect to={`/books/${currentBook._id}`} />;
   }
 
   return (
-    <Form
-      values={values}
-      handleChange={handleChange}
-      handleSubmit={handleSubmit}
-    />
+    <>
+      <Form
+        values={values}
+        handleChange={handleChange}
+        handleSubmit={handleSubmit}
+      />
+      <button onClick={deleteBook}>Delete Book</button>
+    </>
   );
 }
 
