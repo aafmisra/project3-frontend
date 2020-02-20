@@ -59,21 +59,9 @@ describe('<Home />', () => {
 //test if new is rendered without crashing
 //by checking if component new is rendered without errors.
 describe('<New />', () => {
-  it('renders New without crashing', () => {
-    function getBooks() {
-      const url = `http://localhost:4000/books`;
-
-      fetch(url)
-        .then(res => res.json())
-        .then(data => {
-          console.log(data);
-        })
-        .catch(console.error);
-    }
-
-    const div = document.createElement('div');
-    ReactDOM.render(<New getBooks={getBooks} />, div);
-    ReactDOM.unmountComponentAtNode(div);
+  it('renders a form', () => {
+    const wrapper = shallow(<New />);
+    expect(wrapper.contains(<Form />));
   });
 });
 
@@ -112,22 +100,14 @@ describe('<ShowBook />', () => {
   });
 });
 
-// ///delete book
-// describe('<Edit />', () => {
-//   it('deletes book', () => {
-//     // in order to test a call to an api you need ot use supertest
-//     // you need to create a fake (mock) server
-//     // provide the api call the expected input
-//     // and expect that the output will be correct
-//   });
-// });
-// it.only('handles a change to a book') => {
-//      const wrapper = shallow(<Edit />, { disableLifecycleMethods: true });
-//         console.log(wrapper.props())
-//          wrapper = shallow(<Edit />, { disableLifecycleMethods: true });
-//   });
-
+describe('<Edit />', () => {
+  it('Renders delete button', () => {
+    const wrapper = shallow(<Edit match={{ params: { id: 1 } }} />);
+    expect(
+      wrapper.containsMatchingElement(<button>Delete Book</button>)
+    ).toBeTruthy();
+  });
+});
 
 // Run tests
 // New snapshot is created, it compares with the auto generated snapshot stored in the directory __snapshots__
-
