@@ -10,6 +10,7 @@ function App() {
   const [books, setBooks] = useState([]);
   const [error, setError] = useState(false);
 
+  //pulls all books from the database
   function getBooks() {
     const url = `http://localhost:4000/books`;
 
@@ -17,7 +18,6 @@ function App() {
       .then(res => res.json())
       .then(data => {
         setBooks(data);
-        console.log(data);
       })
       .catch(() => {
         setError(true);
@@ -35,13 +35,14 @@ function App() {
   if (error) {
     return <div>Sorry, there was an error getting the books</div>;
   }
-
+//return switches and routes for main content and header navigation buttons
   return (
     <div className="App">
       <header>
 
         <div className="logoName">
           <img src={ process.env.PUBLIC_URL + '/logo.png' } alt='bookbear logo' className="logo"/>
+
 
         <h1>
           <Link to="/books">Book<br></br>Bear</Link>
