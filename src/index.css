@@ -136,14 +136,20 @@ div.card p {
 
 /* Media Queries */
 
+/* large monitors */
 @media (min-width: 1400px) {
   div.oneBook img,
   div.cardContainer img {
-    height: 80vh;
+    height: 60vh;
     width: auto;
+  }
+
+   .card {
+    max-width: 310px;
   }
 }
 
+/* large tablets */
 @media (max-width: 1000px) {
   div.oneBook img,
   div.cardContainer img {
@@ -156,6 +162,20 @@ div.card p {
   }
 }
 
+/* ipads */
+@media (max-width: 800px) {
+  div.oneBook img,
+  div.cardContainer img {
+    height: 30vh;
+    width: auto;
+  }
+
+  .card {
+    max-width: 210px;
+  }
+}
+
+/* phones */
 @media (max-width: 500px) {
   header {
     flex-direction: column;
@@ -189,10 +209,3 @@ div.card p {
   }
 }
 
-/* @media (min-width: 1000px) {
-  div.oneBook img,
-  div.cardContainer img {
-    height: 80%;
-    width: auto;
-  }
-} */
