@@ -131,3 +131,21 @@ div.card h3 {
 div.card p {
   margin: 3px 0;
 }
+
+/* Media Queries */
+
+@media (min-width: 1400px) {
+  div.oneBook img,
+  div.cardContainer img {
+    height: 100%;
+    width: auto;
+  }
+}
+
+@media (min-width: 1000px) {
+  div.oneBook img,
+  div.cardContainer img {
+    height: 80%;
+    width: auto;
+  }
+}
