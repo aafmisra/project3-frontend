@@ -11,7 +11,7 @@ function ShowBook(props) {
   if (currentBook) {
     return (
       <div className="oneBook">
-        <img src={currentBook.coverPhotoURL} alt={currentBook.title} />
+        <img src={currentBook.coverPhotoURL} alt={currentBook.title} className= "showBookCover"/>
         <div className="bookInfo">
           <h3>{currentBook.title}</h3>
 
