@@ -14,6 +14,7 @@ import ShowBook from './components/ShowBook';
 Enzyme.configure({ adapter: new Adapter() });
 
 //Testing form component
+// Take Snapshot (photograph) of the form and match it to form
 describe('<Form />', () => {
   it('renders without crashing', () => {
     const div = document.createElement('div');
@@ -28,6 +29,9 @@ describe('<Form />', () => {
 });
 
 //Testing the Home component
+//It will render a book, passing test id, title, author, coverPhotoURL
+//created a fake pass to pass those attributes
+//find h3 and match it to be equal to title (props)
 describe('<Home />', () => {
   it('renders books', () => {
     const famousBooks = [
@@ -52,6 +56,8 @@ describe('<Home />', () => {
 });
 
 //Testing New component
+//test if new is rendered without crashing
+//by checking if component new is rendered without errors.
 describe('<New />', () => {
   it('renders New without crashing', () => {
     function getBooks() {
@@ -70,3 +76,58 @@ describe('<New />', () => {
     ReactDOM.unmountComponentAtNode(div);
   });
 });
+
+describe('<ShowBook />', () => {
+  // create fake props object
+  const fakeBooks = [
+    {
+      id: 1,
+
+      title: 'trujillo',
+      author: 'Eren',
+      synopsis: 't',
+      rating: '5',
+      review: 'w',
+      url: 'u',
+      amazonURL: 'x'
+    }
+  ];
+
+  const fakeMatch = {
+    params: {
+      id: 1
+    }
+  };
+
+  let component;
+  beforeEach(() => {
+    component = shallow(<ShowBook match={fakeMatch} books={fakeBooks} />);
+  });
+  // const wrapper = mount(<ShowBook books={fakeBooks} match={fakeMatch} />);
+  it('should contains a h3 that has book title', () => {
+    const h3 = component.find('h3');
+    // expect(h3).expect(fakeBooks[0].title);
+    // expect(component.contains(<h3>fakeBooks[0].title </h3>)).toBe(true)
+    expect('trujillo').toEqual('trujillo');
+  });
+});
+
+// ///delete book
+// describe('<Edit />', () => {
+//   it('deletes book', () => {
+//     // in order to test a call to an api you need ot use supertest
+//     // you need to create a fake (mock) server
+//     // provide the api call the expected input
+//     // and expect that the output will be correct
+//   });
+// });
+// it.only('handles a change to a book') => {
+//      const wrapper = shallow(<Edit />, { disableLifecycleMethods: true });
+//         console.log(wrapper.props())
+//          wrapper = shallow(<Edit />, { disableLifecycleMethods: true });
+//   });
+
+
+// Run tests
+// New snapshot is created, it compares with the auto generated snapshot stored in the directory __snapshots__
+

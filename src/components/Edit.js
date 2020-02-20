@@ -8,26 +8,37 @@ function Edit(props) {
   const [book, setBook] = useState();
   const [deleted, setDeleted] = useState(false);
   const [createdId, setCreatedId] = useState(null); //Thanks, Jen!
-  
-
 
   // only run getBooks when Edit unmounts (you hit
   // submit or delete)
   useEffect(() => {
     fetch(url)
-    .then(response => response.json())
-    .then(setBook)
-    .catch(console.error)
+      .then(response => response.json())
+      .then(setBook)
+      .catch(console.error);
     return () => props.getBooks();
   }, []);
 
-  
+  // TEST THIS FUNCTION
+
+  // MOUNT < EDIT />
+  // PREPARE A FAKE EVENT
+  // YOU MIGHT HAVE TO RUN THE APP AND CONSOLE LOG THIS EVENT TO SEE THE SHAPE OF THE EVENT
+  // PASS FAKE VENT INTO EDIT.handleChange
+  // THEN CHECK THE book state variable to see if it has the name and value that you passed into handleChange
+  // GOOGLE "how to test react handler with enzyme"
+  const event = {
+    target: {
+      name: 'hello',
+      value: 'llo'
+    }
+  };
+
   const handleChange = function(event) {
     event.persist();
     const { name, value } = event.target;
 
     setBook({ ...book, [name]: value });
-    
   };
 
   function updateBook() {
