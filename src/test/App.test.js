@@ -5,11 +5,11 @@ import toJson from 'enzyme-to-json';
 import Adapter from 'enzyme-adapter-react-16';
 import { Link, MemoryRouter as Router } from 'react-router-dom';
 
-import Form from './components/Form';
-import Home from './components/Home';
-import Edit from './components/Edit';
-import New from './components/New';
-import ShowBook from './components/ShowBook';
+import Form from '../components/Form';
+import Home from '../components/Home';
+import Edit from '../components/Edit';
+import New from '../components/New';
+import ShowBook from '../components/ShowBook';
 
 Enzyme.configure({ adapter: new Adapter() });
 
