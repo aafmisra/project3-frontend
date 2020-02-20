@@ -11,7 +11,6 @@ function Edit(props) {
   const [createdId, setCreatedId] = useState(null);
   const [error, setError] = useState(false); //Thanks, Jen!
 
-
   // only run getBooks when Edit unmounts (you hit
   // submit or delete)
   //fetch the book we want to edit and set it to the state of book, so the inputs render already filled in
@@ -19,13 +18,11 @@ function Edit(props) {
     fetch(url)
       .then(response => response.json())
       .then(setBook)
-
       .catch(() => {
         setError(true);
       });
     return () => props.getBooks();
   }, []);
-
 
   //gets value of each input field and updates the state of book
   const handleChange = function(event) {
