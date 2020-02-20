@@ -98,12 +98,14 @@ input {
   padding: 5px;
 }
 
-input[type='submit'] {
+input[type='submit'], button {
   font-size: 16px;
   background-color: #983628;
   color: white;
   font-weight: bold;
   padding: 10px 0;
+  width: 100%;
+  margin: 10px 0;
 }
 
 img {
@@ -111,7 +113,7 @@ img {
 }
 
 div.oneBook a,
-.button, button {
+.button {
   text-decoration: none;
   text-transform: uppercase;
   letter-spacing: 2px;
@@ -126,7 +128,7 @@ div.oneBook a {
   text-decoration: none;
   text-transform: uppercase;
   letter-spacing: 2px;
-  color: #f0f4c8;
+  color: white;
   background-color: #983628;
   padding: 6px 8px;
   margin: 5px;
