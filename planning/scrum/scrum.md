@@ -41,3 +41,16 @@
 - Teresa: styled forms up to be formatted better
 - Dan: pull request for fixing issue with new info not being displayed until refresh
 - Teresa: excited to see bug fixes
+
+## Day 4
+
+- Deployment for back and frontend completed
+- Completed majority of CSS styling
+- completed bug fixes for content rendering and losing last input on edit and create
+- Teresa: made favicon
+- Teresa: submitted pull requests for frontend testing
+- Asha: went back to comment code
+- Asha: dropped in a logo for the header with pull request
+- Joe: submitted pull request for error handling
+- Joe: started media queries yesterday
+- Dan: anxious just because deadline is approaching, but confident in final product
