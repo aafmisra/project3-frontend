@@ -4,7 +4,8 @@ import Form from './Form';
 
 function New(props) {
   const [book, setBook] = useState({});
-  const [createdId, setCreatedId] = useState(null); //Thanks, Jen!
+  const [createdId, setCreatedId] = useState(null);
+  //Thanks, Jen!
 
   // only run getBooks when New unmounts (you
   // click submit)

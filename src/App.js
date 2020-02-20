@@ -8,6 +8,7 @@ import ShowBook from './components/ShowBook';
 
 function App() {
   const [books, setBooks] = useState([]);
+  const [error, setError] = useState(false);
 
   //pulls all books from the database
   function getBooks() {
@@ -18,7 +19,9 @@ function App() {
       .then(data => {
         setBooks(data);
       })
-      .catch(console.error);
+      .catch(() => {
+        setError(true);
+      });
   }
 
   // run getBooks only on initial component mount
@@ -28,13 +31,23 @@ function App() {
     getBooks();
   }, []);
 
-  //return switches and routes for main content and header navigation buttons
+  //displays error message if books can't be retrieved
+  if (error) {
+    return <div>Sorry, there was an error getting the books</div>;
+  }
+//return switches and routes for main content and header navigation buttons
   return (
     <div className="App">
       <header>
+
+        <div className="logoName">
+          <img src={ process.env.PUBLIC_URL + '/logo.png' } alt='bookbear logo' className="logo"/>
+
+
         <h1>
-          <Link to="/books">BookBear</Link>
+          <Link to="/books">Book<br></br>Bear</Link>
         </h1>
+        </div>
         <Switch>
           <Route exact path="/books">
             <Link to="/new" className="button">
