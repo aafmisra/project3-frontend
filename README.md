@@ -1,4 +1,4 @@
-# BookBear
+# BookBear :books: :bear:
 
 screenshots
 
