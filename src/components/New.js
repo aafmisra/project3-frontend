@@ -12,6 +12,7 @@ function New(props) {
     return () => props.getBooks();
   }, []);
 
+  //gets value of each input field and updates the state of book
   const handleChange = function(event) {
     event.persist();
     const { name, value } = event.target;
@@ -19,7 +20,10 @@ function New(props) {
     setBook({ ...book, [name]: value });
   };
 
-  function addBook() {
+  //makes POST request to the backend to add a book to the database
+  function handleSubmit(event) {
+    event.preventDefault();
+
     const url = 'http://localhost:4000/books';
     fetch(url, {
       method: 'POST',
@@ -34,15 +38,12 @@ function New(props) {
       });
   }
 
-  function handleSubmit(event) {
-    event.preventDefault();
-    addBook();
-  }
-
+  //if id was created successfully, redirect user back to homepage
   if (createdId) {
     return <Redirect to="/books" />;
   }
 
+  //renders empty form for user to fill out
   return (
     <Form book={book} handleChange={handleChange} handleSubmit={handleSubmit} />
   );

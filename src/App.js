@@ -9,6 +9,7 @@ import ShowBook from './components/ShowBook';
 function App() {
   const [books, setBooks] = useState([]);
 
+  //pulls all books from the database
   function getBooks() {
     const url = `http://localhost:4000/books`;
 
@@ -16,7 +17,6 @@ function App() {
       .then(res => res.json())
       .then(data => {
         setBooks(data);
-        console.log(data);
       })
       .catch(console.error);
   }
@@ -28,10 +28,10 @@ function App() {
     getBooks();
   }, []);
 
+  //return switches and routes for main content and header navigation buttons
   return (
     <div className="App">
       <header>
-
         <h1>
           <Link to="/books">BookBear</Link>
         </h1>
@@ -46,7 +46,10 @@ function App() {
             path="/books/:id"
             render={routerProps => {
               return (
-                <Link to={`/books/${routerProps.match.params.id}/edit`} className="button">
+                <Link
+                  to={`/books/${routerProps.match.params.id}/edit`}
+                  className="button"
+                >
                   Edit
                 </Link>
               );
@@ -64,7 +67,6 @@ function App() {
             </Link>
           </Route>
         </Switch>
-
       </header>
       <main>
         <Switch>
@@ -96,7 +98,6 @@ function App() {
                   match={routerProps.match}
                 />
               );
-
             }}
           />
         </Switch>

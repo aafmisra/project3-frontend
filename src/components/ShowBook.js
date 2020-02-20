@@ -6,8 +6,7 @@ function ShowBook(props) {
     book => book._id === props.match.params.id
   );
 
-  console.log(currentBook);
-
+  //render all info for the selected book after it loads
   if (currentBook) {
     return (
       <div className="oneBook">
