@@ -39,9 +39,14 @@ function App() {
   return (
     <div className="App">
       <header>
+
+        <div className="logoName">
+          <img src={ process.env.PUBLIC_URL + '/logo.png' } alt='bookbear logo' className="logo"/>
+
         <h1>
-          <Link to="/books">BookBear</Link>
+          <Link to="/books">Book<br></br>Bear</Link>
         </h1>
+        </div>
         <Switch>
           <Route exact path="/books">
             <Link to="/new" className="button">

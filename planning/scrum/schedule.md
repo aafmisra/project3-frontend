@@ -38,19 +38,20 @@
 
 #### (full CSS flexbox styling completed)
 
-- [ ] merge bug fixes and styling
-- [ ] pick an icon and logo
-- [ ] choose color layout
-- [ ] fully implemented design
-- [ ] mobile functionality
-- [ ] full deployment
+- [x] merge bug fixes and styling
+- [x] pick an icon and logo
+- [x] choose color layout
+- [x] fully implemented design
+- [x] mobile functionality
+- [x] full deployment
 - user reviews (family, friends, classmates)
-- [ ] attempt user model
+- [x] attempt user model
 
 ### Day 4 (Thursday):
 
 #### (implementation of additional features)
 
+- [ ] front end testing
 - [ ] debugging
 - [ ] overall review and documentation (README.md)
 - [ ] decide which features are time viable, and implement
