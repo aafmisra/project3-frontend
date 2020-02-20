@@ -7,27 +7,26 @@ function Edit(props) {
 
   const [book, setBook] = useState();
   const [deleted, setDeleted] = useState(false);
-  const [createdId, setCreatedId] = useState(null); //Thanks, Jen!
-  
-
+  const [createdId, setCreatedId] = useState(null);
+  const [error, setError] = useState(false); //Thanks, Jen!
 
   // only run getBooks when Edit unmounts (you hit
   // submit or delete)
   useEffect(() => {
     fetch(url)
-    .then(response => response.json())
-    .then(setBook)
-    .catch(console.error)
+      .then(response => response.json())
+      .then(setBook)
+      .catch(() => {
+        setError(true);
+      });
     return () => props.getBooks();
   }, []);
 
-  
   const handleChange = function(event) {
     event.persist();
     const { name, value } = event.target;
 
     setBook({ ...book, [name]: value });
-    
   };
 
   function updateBook() {
@@ -41,6 +40,9 @@ function Edit(props) {
       .then(response => response.json())
       .then(data => {
         setCreatedId(data._id);
+      })
+      .catch(() => {
+        setError(true);
       });
   }
 
@@ -68,6 +70,10 @@ function Edit(props) {
   // goes back to ShowBook if book was updated
   if (createdId) {
     return <Redirect to={`/books/${createdId}`} />;
+  }
+  //returns error message if component doesn't update
+  if (error) {
+    return <div>Sorry, there was a problem updating the book</div>;
   }
 
   return (
