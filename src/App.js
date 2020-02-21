@@ -120,7 +120,7 @@ function App() {
         </Switch>
       </main>
       <footer>
-        <p>© Book Bear Team 2020</p>
+        <p>© BookBear Team 2020</p>
         <a
           href="https://github.com/aafmisra/project3-frontend"
           target="_blank"
