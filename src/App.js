@@ -119,7 +119,23 @@ function App() {
           />
         </Switch>
       </main>
-      <footer>© Book Bear Team 2020</footer>
+      <footer>
+        <p>© Book Bear Team 2020</p>
+        <a
+          href="https://github.com/aafmisra/project3-frontend"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          frontend repo on GitHub
+        </a>
+        <a
+          href="https://github.com/jpettett/book-bear-api"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          backend repo on GitHub
+        </a>
+      </footer>
     </div>
   );
 }

@@ -65,7 +65,6 @@ function Form({ book, handleSubmit, handleChange }) {
           onChange={handleChange}
           value={book.review}
         />
-        <label htmlFor="readStatus">I'read this one</label>
         {/* update when user model is implemented: <input type="checkbox" name="readStatus" /> */}
         <input type="submit" />
       </form>
