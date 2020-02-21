@@ -1,8 +1,4 @@
-import React, { useEffect } from 'react';
-import { Link } from 'react-router-dom';
-
-
-
+import React from 'react';
 
 function ShowBook(props) {
   const currentBook = props.books.find(
@@ -13,7 +9,11 @@ function ShowBook(props) {
   if (currentBook) {
     return (
       <div className="oneBook">
-        <img src={currentBook.coverPhotoURL} alt={currentBook.title} className= "showBookCover"/>
+        <img
+          src={currentBook.coverPhotoURL}
+          alt={currentBook.title}
+          className="showBookCover"
+        />
         <div className="bookInfo">
           <h3>{currentBook.title}</h3>
 
