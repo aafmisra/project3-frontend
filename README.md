@@ -34,7 +34,7 @@ You can see the backend repo [here](https://github.com/jpettett/book-bear-api).
 
 Fork and clone this repo to download your local copy of the files. Install dependencies with ```npm```. Use ```yarn start``` or ```npm start``` to launch the development server.
 
-Visit the backend repo, download files and dependencies and use ```nodemon``` to run the server locally.
+Visit the backend repo, download files and dependencies and use ```nodemon``` to run the server locally. Run ```node db/seed.js``` to seed your local MongoDB database. 
 
 ## Contribution
 
