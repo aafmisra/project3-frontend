@@ -12,7 +12,7 @@ function App() {
 
   //pulls all books from the database
   function getBooks() {
-    const url = `http://localhost:4000/books`;
+    const url = `http://book-bear-api.herokuapp.com/books`;
 
     fetch(url)
       .then(res => res.json())

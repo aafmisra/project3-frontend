@@ -25,7 +25,7 @@ function New(props) {
   function handleSubmit(event) {
     event.preventDefault();
 
-    const url = 'http://localhost:4000/books';
+    const url = 'http://book-bear-api.herokuapp.com/books';
     fetch(url, {
       method: 'POST',
       headers: {

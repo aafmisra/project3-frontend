@@ -3,7 +3,7 @@ import { Redirect } from 'react-router-dom';
 import Form from './Form';
 
 function Edit(props) {
-  const url = `http://localhost:4000/books/${props.match.params.id}`;
+  const url = `http://book-bear-api.herokuapp.com/books/${props.match.params.id}`;
 
   const [book, setBook] = useState();
   const [deleted, setDeleted] = useState(false);
