@@ -1,5 +1,6 @@
 import React from 'react';
 
+
 function Form({ book, handleSubmit, handleChange }) {
   if (!book) {
     return null;
@@ -65,7 +66,7 @@ function Form({ book, handleSubmit, handleChange }) {
           value={book.review}
         />
         <label htmlFor="readStatus">I'read this one</label>
-        <input type="checkbox" name="readStatus" />
+        {/* update when user model is implemented: <input type="checkbox" name="readStatus" /> */}
         <input type="submit" />
       </form>
     </div>

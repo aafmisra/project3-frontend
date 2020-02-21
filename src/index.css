@@ -24,7 +24,11 @@ main {
 header,
 footer {
   flex-shrink: 0;
-  background-color: #b3cdd1;
+}
+
+h1 {
+  font-size: 60px;
+  line-height: .8;
 }
 
 h1 a {
@@ -38,12 +42,17 @@ h1 a:hover {
 }
 
 
+div.logoName {
+  padding: 0;
+}
+
 header {
+  background-color: #b3cdd1;
   border-bottom: 1px solid white;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  align-items: baseline;
+  align-items: center;
   padding: 0 20px;
   position: sticky;
   top: 0;
@@ -53,7 +62,7 @@ header {
 .cardContainer {
   display: flex;
   flex-flow: row wrap;
-  justify-content: center;
+  justify-content: space-evenly;
 }
 
 .card {
@@ -94,12 +103,14 @@ input {
   padding: 5px;
 }
 
-input[type='submit'] {
+input[type='submit'], button {
   font-size: 16px;
   background-color: #983628;
-  color: #f0f4c8;
+  color: white;
   font-weight: bold;
   padding: 10px 0;
+  width: 100%;
+  margin: 10px 0;
 }
 
 img {
@@ -115,7 +126,7 @@ div.oneBook a,
   text-decoration: none;
   text-transform: uppercase;
   letter-spacing: 2px;
-  color: #b3cdd1;
+  color: white;
   background-color: #983628;
   padding: 6px 8px;
   margin: 5px;
@@ -126,7 +137,7 @@ div.oneBook a {
   text-decoration: none;
   text-transform: uppercase;
   letter-spacing: 2px;
-  color: #f0f4c8;
+  color: white;
   background-color: #983628;
   padding: 6px 8px;
   margin: 5px;
@@ -140,6 +151,18 @@ div.card h3 {
 div.card p {
   margin: 3px 0;
 }
+
+.logoName {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.logo {
+  height: 150px;
+  width: auto;
+}
+
 
 /* Media Queries */
 
@@ -242,4 +265,5 @@ div.card p {
   div.card p {
     font-size: 10px;
   }
+
 }
