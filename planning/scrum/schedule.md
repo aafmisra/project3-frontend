@@ -51,10 +51,10 @@
 
 #### (implementation of additional features)
 
-- [ ] front end testing
-- [ ] debugging
-- [ ] overall review and documentation (README.md)
-- [ ] decide which features are time viable, and implement
+- [x] front end testing
+- [x] debugging
+- [x] overall review and documentation (README.md)
+- [x] decide which features are time viable, and implement
 
 ### Day 5 (Friday):
 

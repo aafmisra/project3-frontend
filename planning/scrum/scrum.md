@@ -54,3 +54,11 @@
 - Joe: submitted pull request for error handling
 - Joe: started media queries yesterday
 - Dan: anxious just because deadline is approaching, but confident in final product
+
+## Day 5
+
+- completed testing on frontend
+- completed responsive media queries
+- made big progress on backend usermodel
+- Team: excited to present
+- plan out presentation
