@@ -35,18 +35,22 @@ function App() {
   if (error) {
     return <div>Sorry, there was an error getting the books</div>;
   }
-//return switches and routes for main content and header navigation buttons
+  //return switches and routes for main content and header navigation buttons
   return (
     <div className="App">
       <header>
-
         <div className="logoName">
-          <img src={ process.env.PUBLIC_URL + '/logo.png' } alt='bookbear logo' className="logo"/>
+          <img
+            src={process.env.PUBLIC_URL + '/logo.png'}
+            alt="bookbear logo"
+            className="logo"
+          />
 
-
-        <h1>
-          <Link to="/books">Book<br></br>Bear</Link>
-        </h1>
+          <h1>
+            <Link to="/books">
+              Book<br></br>Bear
+            </Link>
+          </h1>
         </div>
         <Switch>
           <Route exact path="/books">
@@ -115,6 +119,7 @@ function App() {
           />
         </Switch>
       </main>
+      <footer>© Book Bear Team 2020</footer>
     </div>
   );
 }
