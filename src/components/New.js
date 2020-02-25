@@ -3,7 +3,16 @@ import { Redirect } from 'react-router-dom';
 import Form from './Form';
 
 function New(props) {
-  const [book, setBook] = useState({});
+  const [book, setBook] = useState({
+    author: '',
+    coverPhotoURL: '',
+    amazonURL: '',
+    readStatus: false,
+    synopsis: '',
+    review: '',
+    rating: 0,
+    title: ''
+  });
   const [createdId, setCreatedId] = useState(null);
   //Thanks, Jen!
 

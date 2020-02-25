@@ -53,7 +53,7 @@ function App() {
           </h1>
         </div>
         <Switch>
-          <Route exact path="/books">
+          <Route exact path={['/', '/books']}>
             <Link to="/new" className="button">
               Add a book
             </Link>
@@ -72,7 +72,6 @@ function App() {
               );
             }}
           />
-          ;
           <Route path="/new">
             <Link to="/books" className="button">
               Cancel
@@ -87,7 +86,7 @@ function App() {
       </header>
       <main>
         <Switch>
-          <Route exact path="/books">
+          <Route exact path={['/', '/books']}>
             <Home books={books} />
           </Route>
           <Route
