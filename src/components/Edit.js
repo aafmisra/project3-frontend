@@ -1,14 +1,25 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
+import { UserContext } from '../UserContext';
 import { Redirect } from 'react-router-dom';
 import Form from './Form';
+import { APIURL } from '../config';
 
-function Edit(props) {
-  const url = `http://localhost:4000/books/${props.match.params.id}`;
-
-  const [book, setBook] = useState();
+function Edit({ match }) {
+  const url = `${APIURL}/books/${match.params.id}`;
+  const initialState = {
+    title: '',
+    author: '',
+    coverPhotoURL: '',
+    amazonURL: '',
+    synopsis: '',
+    rating: 3,
+    review: '',
+    readState: ''
+  };
+  const { user } = useContext(UserContext);
+  const [book, setBook] = useState(initialState);
   const [deleted, setDeleted] = useState(false);
-
-  const [createdId, setCreatedId] = useState(null);
+  const [edited, setEdited] = useState(null);
   const [error, setError] = useState(false); //Thanks, Jen!
 
   // only run getBooks when Edit unmounts (you hit
@@ -21,7 +32,6 @@ function Edit(props) {
       .catch(() => {
         setError(true);
       });
-    return () => props.getBooks();
   }, []);
 
   //gets value of each input field and updates the state of book
@@ -39,13 +49,14 @@ function Edit(props) {
     fetch(url + '/edit', {
       method: 'PUT',
       headers: {
-        'content-type': 'application/json; charset=UTF-8'
+        'content-type': 'application/json; charset=UTF-8',
+        Authorization: `Bearer ${user.token}`
       },
       body: JSON.stringify(book)
     })
       .then(response => response.json())
       .then(data => {
-        setCreatedId(data._id);
+        setEdited(data._id);
       })
       .catch(() => {
         setError(true);
@@ -54,7 +65,10 @@ function Edit(props) {
 
   // deletes currentBook from ShowBook.js
   function deleteBook(event) {
-    fetch(url, { method: 'DELETE' })
+    fetch(url, {
+      method: 'DELETE',
+      headers: { Authorization: `Bearer ${user.token}` }
+    })
       // when running deleteBook, will make a boolean
       // to be checked
       .then(res => {
@@ -69,9 +83,10 @@ function Edit(props) {
   }
 
   // goes back to ShowBook if book was updated
-  if (createdId) {
-    return <Redirect to={`/books/${createdId}`} />;
+  if (edited) {
+    return <Redirect to={`/books/${edited}`} />;
   }
+
   //returns error message if component doesn't update
   if (error) {
     return <div>Sorry, there was a problem updating the book</div>;

@@ -1,133 +1,67 @@
-import React, { useState, useEffect } from 'react';
-// import logo from './logo.svg';
+import React, { useState } from 'react';
+import { UserContext } from './UserContext';
+import { Switch, Route, Redirect } from 'react-router-dom';
+import Header from './components/Header';
+import SignIn from './components/Signin';
+import SignUp from './components/Signup';
 import Home from './components/Home';
 import New from './components/New';
 import Edit from './components/Edit';
-
-import { Link, Switch, Route } from 'react-router-dom';
 import ShowBook from './components/ShowBook';
-import SignUp from './components/Signup';
 
 function App() {
-  const [books, setBooks] = useState([]);
-  const [error, setError] = useState(false);
-
-  //pulls all books from the database
-  function getBooks() {
-    const url = `http://localhost:4000/books`;
-
-    fetch(url)
-      .then(res => res.json())
-      .then(data => {
-        setBooks(data);
-      })
-      .catch(() => {
-        setError(true);
-      });
-  }
-
-  // run getBooks only on initial component mount
-  // (happens once when page first loads, or manual
-  // refresh)
-  useEffect(() => {
-    getBooks();
-  }, []);
-
-  //displays error message if books can't be retrieved
-  if (error) {
-    return <div>Sorry, there was an error getting the books</div>;
-  }
-  //return switches and routes for main content and header navigation buttons
+  const [user, setUser] = useState(null);
+  // JAM: It'll be easier to move Header and the books operations for Home into its own component!
+  // This helps keep App more concise and easier to update in the future.  Additionally, it'll
+  // make it easier to render different content based on different states, such as
+  // whether the person is logged in or not, whether they have books or not,
+  // and whether there's an error in retreiving the books, etc.
   return (
     <div className="App">
-      <header>
-        <div className="logoName">
-          <img
-            src={process.env.PUBLIC_URL + '/logo.png'}
-            alt="bookbear logo"
-            className="logo"
-          />
-
-          <h1>
-            <Link to="/books">
-              Book<br></br>Bear
-            </Link>
-          </h1>
-        </div>
-        <Switch>
-          <Route exact path="/">
-            <Link to="/signup">Sign Up</Link>
-          </Route>
-          <Route exact path="/books">
-            <Link to="/new" className="button">
-              Add a book
-            </Link>
-          </Route>
-          <Route
-            exact
-            path="/books/:id"
-            render={routerProps => {
-              return (
-                <Link
-                  to={`/books/${routerProps.match.params.id}/edit`}
-                  className="button"
-                >
-                  Edit
-                </Link>
-              );
-            }}
-          />
-          ;
-          <Route path="/new">
-            <Link to="/books" className="button">
-              Cancel
-            </Link>
-          </Route>
-          <Route exact path="/books/:id/edit">
-            <Link to="./" className="button">
-              Cancel
-            </Link>
-          </Route>
-        </Switch>
-      </header>
-
-      <main>
-        <Switch>
-          <Route exact path="/signup">
-            <SignUp />
-          </Route>
-          <Route exact path="/books">
-            <Home books={books} />
-          </Route>
-          <Route
-            exact
-            path="/books/:id"
-            render={routerProps => {
-              return (
-                <ShowBook
-                  getBooks={getBooks}
-                  books={books}
-                  match={routerProps.match}
-                />
-              );
-            }}
-          />
-
-          <Route path="/new" render={() => <New getBooks={getBooks} />} />
-          <Route
-            path="/books/:id/edit"
-            render={routerProps => {
-              return (
-                <Edit
-                  getBooks={getBooks}
-                  books={books}
-                  match={routerProps.match}
-                />
-              );
-            }}
-          />
-        </Switch>
-      </main>
+      <UserContext.Provider value={{ user, setUser }}>
+        <Header />
+        <main>
+          <Switch>
+            <Route exact path="/signup" component={SignUp} />
+            <Route exact path="/signin" component={SignIn} />
+            <Route exact path="/" component={Home} />
+            <Route
+              exact
+              path="/new"
+              render={props => {
+                if (user) {
+                  return <New {...props} />;
+                } else {
+                  return <Redirect to="/" />;
+                }
+              }}
+            />
+            <Route
+              exact
+              path="/books/:id"
+              render={props => {
+                if (user) {
+                  return <ShowBook {...props} />;
+                } else {
+                  return <Redirect to="/" />;
+                }
+              }}
+            />
+            <Route
+              exact
+              path="/books/:id/edit"
+              render={props => {
+                if (user) {
+                  return <Edit {...props} />;
+                } else {
+                  return <Redirect to="/" />;
+                }
+              }}
+            />
+            <Route path="/*" render={() => <Redirect to="/" />} />}
+          </Switch>
+        </main>
+      </UserContext.Provider>
     </div>
   );
 }
